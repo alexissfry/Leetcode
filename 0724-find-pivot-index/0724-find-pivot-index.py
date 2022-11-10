@@ -4,11 +4,12 @@ class Solution:
         left = 0
         
         for i,n in enumerate(nums):
-            left += n
-            right = tot - left
+            right = tot - left - n
             
-            if left-n == right:
+            if left == right:
                 return i
+            
+            left += n
         
         return -1
             
