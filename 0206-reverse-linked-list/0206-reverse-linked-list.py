@@ -15,11 +15,12 @@ class Solution:
             nodes.append(head.val)
             head = head.next 
         
-        reverse = []
-        reverse.append(ListNode(nodes[0],None))
-        i = 1
+        reverse = [None]
+        # reverse.append(ListNode(nodes[0],None))
+        
+        i = 0
         while i < len(nodes):
-            reverse.append(ListNode(nodes[i], reverse[i-1]))
+            reverse.append(ListNode(nodes[i], reverse[-1]))
             i += 1
         
-        return reverse[len(reverse)-1]
+        return reverse[-1]
