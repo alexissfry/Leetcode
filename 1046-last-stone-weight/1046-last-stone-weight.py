@@ -7,10 +7,7 @@ class Solution(object):
         """
         
         for i in range(0,len(stones)):
-            stones[i] = -stones[i]
-        
-        print(stones)
-        
+            stones[i] = -stones[i]        
         heapq.heapify(stones)
         
         while len(stones) > 1:
