@@ -5,18 +5,23 @@ class Solution(object):
         :type stones: List[int]
         :rtype: int
         """
+        
+        for i in range(0,len(stones)):
+            stones[i] = -stones[i]
+        
+        print(stones)
+        
+        heapq.heapify(stones)
+        
         while len(stones) > 1:
-            (max1,max2) = heapq.nlargest(2, stones)
-            stones.remove(max1)
+            max1 = heapq.heappop(stones)
+            max2 = heapq.heappop(stones)
             
-            if max1 == max2:
-                stones.remove(max2)
-            else:
-                stones.remove(max2)
-                stones.append(max1-max2)
+            if max1 != max2:
+                heapq.heappush(stones, max1-max2)
         
         if len(stones) != 0:
-            return stones[0]
+            return -stones[0]
         
         return 0
             
