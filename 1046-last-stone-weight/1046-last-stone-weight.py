@@ -6,9 +6,8 @@ class Solution(object):
         :rtype: int
         """
         while len(stones) > 1:
-            max1 = max(stones)
+            (max1,max2) = heapq.nlargest(2, stones)
             stones.remove(max1)
-            max2 = max(stones)
             
             if max1 == max2:
                 stones.remove(max2)
