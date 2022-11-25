@@ -4,7 +4,6 @@ class Solution:
         words.reverse()
         result = ""
         
-        print(words)
 
         for i in range(0,len(words)-1):
             result += words[i] + " "
