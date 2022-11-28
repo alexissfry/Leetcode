@@ -5,17 +5,16 @@ class Solution:
         word1 = {}
         word2 = {}
         
-        for i in s:
-            if i in word1:
-                word1[i] += 1
+        for c in s:
+            if c in word1:
+                word1[c] += 1
             else:
-                word1[i] = 1
+                word1[c] = 1
         
-        for j in t:
-            if j in word2:
-                word2[j] += 1
+        for c in t:
+            if c in word2:
+                word2[c] += 1
             else:
-                word2[j] = 1
+                word2[c] = 1
                 
         return word1 == word2
-    
