@@ -1,4 +1,23 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-	    return [word for (word,count) in sorted(Counter(words).most_common(), key = lambda x:(-x[1],x[0]))[:k]] 
+        freq = {}
+
+        for w in words:
+            if w in freq.keys():
+                freq[w] += 1
+            else:
+                freq[w] = 1
+
+        keys = list(freq.keys())
+
+        def sortingKey(k):
+            return [-freq[k], k]
+
+        keys.sort(key = sortingKey)
+        return keys[:k]
         
+        result = []
+        for i in range(0,k):
+            result.append(keys[i])
+
+        return result
