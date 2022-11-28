@@ -14,7 +14,6 @@ class Solution:
             return [-freq[k], k]
 
         keys.sort(key = sortingKey)
-        return keys[:k]
         
         result = []
         for i in range(0,k):
