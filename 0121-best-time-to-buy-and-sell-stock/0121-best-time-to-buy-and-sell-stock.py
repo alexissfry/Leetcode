@@ -1,21 +1,21 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        l = 0
+        r = 1
         maxProfit = 0
-        buy = 0
-        sell = 1
         
-        while sell < len(prices):
-            if prices[buy] < prices[sell]:
-                profit = prices[sell] - prices[buy]
-                maxProfit = max(maxProfit, profit)
+        while r < len(prices):
+            if prices[l] < prices[r]:
+                profit = prices[r] - prices[l]
+                maxProfit = max(maxProfit,profit)
             else:
-                buy = sell
-            sell += 1
-        
+                l = r
+                
+            r += 1
+                
         return maxProfit
-                
-                
+    
+'''
+prices = [7,1,5,3,6,4]
+
+'''
