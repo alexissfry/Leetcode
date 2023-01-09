@@ -5,8 +5,7 @@ class Solution:
         for i in s:
             if i in seen:
                 return i 
-            else:
-                seen.add(i)
+            seen.add(i)
                 
         return 
         
