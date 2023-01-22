@@ -19,7 +19,7 @@ class Solution:
             if 0 <= row < numRows and 0 <= col+1 < numCols and image[row][col+1] == origCol:
                 dfs(row, col+1)
 
-        if image[sr][sc] != color:
+        if origCol != color:
             dfs(sr,sc)
 
         return image
