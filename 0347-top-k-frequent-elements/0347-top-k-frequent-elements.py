@@ -8,7 +8,7 @@ class Solution:
             if n in freq:
                 freq[n] += 1
             else:
-                freq[n] = 0
+                freq[n] = 1
         
         freq = dict(sorted(freq.items(), key=lambda x: x[1], reverse=True))
 
