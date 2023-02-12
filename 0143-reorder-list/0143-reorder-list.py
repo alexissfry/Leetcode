@@ -23,13 +23,10 @@ class Solution:
         
         while left <= right:
             host[left].next = host[right]
-            # print(host[left].val,'points to', host[right].val)
             left += 1 
             host[right].next = host[left]
-            # print(host[right].val,'points to', host[left].val)
             right -= 1
             if left == len(host)//2:
-                # print(host[left].val,'points to none')
                 host[left].next = None
                 break
         
