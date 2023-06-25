@@ -19,9 +19,7 @@ class Solution:
         if run != 1:   
             for ch in str(run):
                 result.append(ch)
-        
-        print(result)
-        
+                
         for i in range(0,len(result)):
             chars[i] = result[i]
             
