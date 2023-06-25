@@ -18,6 +18,7 @@ class Solution:
             if (len(str1)%len(poop) == 0) and (len(str2)%len(poop) == 0):
                 div1 = len(str1)//len(poop)
                 div2 = len(str2)//len(poop)
+                
                 for i in range(div1):
                     j = i*len(poop)
                     if str1[j:j+len(poop)] != poop:
