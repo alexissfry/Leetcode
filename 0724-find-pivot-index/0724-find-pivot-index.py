@@ -1,15 +1,14 @@
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
-        tot = sum(nums)
-        left = 0
+        
+        totSum = sum(nums)
+        runningSum = 0
         
         for i,n in enumerate(nums):
-            right = tot - left - n
             
-            if left == right:
+            if runningSum == totSum-(runningSum + n):
                 return i
             
-            left += n
+            runningSum += n
         
         return -1
-            
