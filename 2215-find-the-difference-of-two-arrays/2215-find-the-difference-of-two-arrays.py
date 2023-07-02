@@ -1,8 +1,8 @@
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
         answer = []
-        dict1 = Counter(nums1)
-        dict2 = Counter(nums2)
+        dict1 = set(nums1)
+        dict2 = set(nums2)
         count1 = []
         count2 = []
         
