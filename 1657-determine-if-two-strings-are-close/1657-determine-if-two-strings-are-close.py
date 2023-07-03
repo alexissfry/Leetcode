@@ -14,9 +14,7 @@ class Solution:
                 dict2[j] += 1
             else:
                 dict2[j] = 1
-        
-        print(dict1, dict2)
-                
+                        
         dict3 = dict()
         dict4 = dict()
         
@@ -31,9 +29,7 @@ class Solution:
                 dict4[j] += 1
             else:
                 dict4[j] = 1
-                
-        print(dict3, dict4)
-        
+                        
         return dict3 == dict4 and set(word1) == set(word2)
                 
         
