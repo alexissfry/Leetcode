@@ -30,6 +30,6 @@ class Solution:
             else:
                 dict4[j] = 1
                         
-        return dict3 == dict4 and set(word1) == set(word2)
+        return set(word1) == set(word2) and dict3 == dict4 
                 
         
