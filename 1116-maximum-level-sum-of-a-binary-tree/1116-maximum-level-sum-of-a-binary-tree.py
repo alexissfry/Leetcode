@@ -9,9 +9,9 @@ from collections import deque
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         queue = deque()
-        maxLevel = -inf
+        maxSum = -inf
         levelCount = 0
-        track = {}
+        maxLevel = 0
 
         queue.append(root)
 
@@ -27,12 +27,10 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
             levelCount += 1 
-            maxLevel = max(maxLevel, level)
-            track[levelCount] = level
-        
-        print(track)
-        for i in track:
-            if track[i] == maxLevel:
-                return i
-        
-        return -1
+
+            if level > maxSum:
+                maxSum = level
+                maxLevel = levelCount
+            print(maxSum, maxLevel)
+
+        return maxLevel
