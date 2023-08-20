@@ -1,22 +1,13 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        freq = {}
+        counter = collections.Counter(words)
 
-        for w in words:
-            if w in freq.keys():
-                freq[w] += 1
-            else:
-                freq[w] = 1
+        pairs = []
 
-        keys = list(freq.keys())
+        for i in counter:
+            pairs.append((-counter[i],i))
+        print(pairs)
 
-        def sortingKey(k):
-            return [-freq[k], k]
+        heapq.heapify(pairs)
 
-        keys.sort(key = sortingKey)
-        
-        result = []
-        for i in range(0,k):
-            result.append(keys[i])
-
-        return result
+        return [heapq.heappop(pairs)[1] for _ in range(k)]
