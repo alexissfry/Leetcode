@@ -3,15 +3,14 @@ class Solution:
         left = 0
         right = len(height)-1
         maxWater = 0
-        
+
         while left < right:
-            water = min(height[left],height[right])*(right-left)
-            if water > maxWater:
-                maxWater = water
-                
-            if height[left] > height[right]:
-                right -= 1
+            minSide = min(height[left],height[right])
+            maxWater = max(maxWater, minSide*(right-left))
+            print(minSide, maxWater)
+            if minSide == height[left]:
+                left += 1 
             else:
-                left += 1
-        
+                right -= 1 
+
         return maxWater
