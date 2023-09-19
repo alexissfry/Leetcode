@@ -19,15 +19,17 @@ class Solution:
         return True
         '''
         visited = [False for i in range(len(rooms))]
-        visited[0] = True 
 
         def dfs(rooms, index):
             nonlocal visited 
 
+            if visited[index] == True:
+                return
+
+            visited[index] = True 
             for key in rooms[index]:
                 #print(rooms, key, visited)
                 if visited[key] == False:
-                    visited[key] = True 
                     dfs(rooms, key)
             return 
 
