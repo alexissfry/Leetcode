@@ -1,42 +1,24 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        '''
-        This only works if we visit the rooms sequentially
-        currKeys = set(rooms[0])
 
-        for i in range(len(rooms)):
-            print(i,currKeys)
-            if i == 0:
-                continue 
-
-            elif i not in currKeys:
-                return False
-
-            for key in rooms[i]:
-                currKeys.add(key)
-            i += 1 
-
-        return True
-        '''
-        visited = [False for i in range(len(rooms))]
-
-        def dfs(rooms, index):
-            nonlocal visited 
+        visited = [False] * len(rooms)
+        
+        def checkRooms(index):
+            #print(index, visited)
+            nonlocal rooms
 
             if visited[index] == True:
-                return
+                return 
 
             visited[index] = True 
             for key in rooms[index]:
-                #print(rooms, key, visited)
-                if visited[key] == False:
-                    dfs(rooms, key)
-            return 
+                checkRooms(key)
 
-        dfs(rooms, 0)
+        checkRooms(0)
 
-        for visit in visited:
-            if not visit:
-                return False 
-        return True 
-        
+        for v in visited:
+            if v == False:
+                return False
+        return True
+            
+
