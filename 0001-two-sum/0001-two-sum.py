@@ -1,12 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         tracker = {}
-        
-        for i, n in enumerate(nums):
-            complement = target - n
-            
-            if n in tracker:
-                return [i, tracker[n]]
+
+        for i,n in enumerate(nums):
+            complement = target - n 
+
+            if complement in tracker:
+                return (tracker[complement],i)
             else:
-                tracker[complement] = i
-                
+                tracker[n] = i
+
+        return []
