@@ -2,11 +2,10 @@ class AuthenticationManager:
 
     def __init__(self, timeToLive: int):
         self.time = timeToLive
-        self.tokens = dict()
-        
+        self.tokens = {}
 
     def generate(self, tokenId: str, currentTime: int) -> None:
-        self.tokens[tokenId] = currentTime 
+        self.tokens[tokenId] = currentTime
 
     def renew(self, tokenId: str, currentTime: int) -> None:
         if tokenId in self.tokens and self.tokens[tokenId] + self.time > currentTime:
@@ -16,8 +15,8 @@ class AuthenticationManager:
         unexpired = 0
         for t in self.tokens.values():
             if t + self.time > currentTime:
-                unexpired += 1
-        return unexpired 
+                unexpired += 1 
+        return unexpired
 
 
 # Your AuthenticationManager object will be instantiated and called as such:
