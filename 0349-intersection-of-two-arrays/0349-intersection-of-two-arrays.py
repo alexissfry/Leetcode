@@ -1,15 +1,16 @@
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        set1 = set()
+        counter = {}
         result = []
 
         for n in nums1:
-            set1.add(n)
+            counter[n] = 1 
 
-        set2 = set()
         for n in nums2:
-            if n not in set2 and n in set1:
+            if n in counter and counter[n] == 1:
                 result.append(n)
-                set2.add(n)
+                counter[n] -= 1 
 
-        return result 
+        return result
+
+        
