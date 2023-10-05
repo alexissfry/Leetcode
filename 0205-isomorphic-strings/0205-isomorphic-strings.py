@@ -1,14 +1,20 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        StoT = {}
-        TtoS = {}
-        
+        if len(s) != len(t):
+            return False 
+
+        StoT = dict()
+        TtoS = dict()
+
         for c1, c2 in zip(s,t):
-            if c1 not in StoT:
-                StoT[c1] = c2
-            if c2 not in TtoS:
-                TtoS[c2] = c1
-            if StoT[c1] != c2 or TtoS[c2] != c1:
-                    return False
-                
+            if (c1 in StoT and StoT[c1] != c2) or (c2 in TtoS and TtoS[c2] != c1):
+                return False 
+
+            StoT[c1] = c2
+            TtoS[c2] = c1
+
         return True
+
+
+
+        
