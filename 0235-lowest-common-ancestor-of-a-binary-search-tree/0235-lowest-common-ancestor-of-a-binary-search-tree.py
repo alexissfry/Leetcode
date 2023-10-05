@@ -7,9 +7,39 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if root.val > p.val and root.val > q.val: #if the root is bigger than both nodes 
-            return self.lowestCommonAncestor(root.left,p,q) #both nodes must be to the left of root
-        elif root.val < p.val and root.val < q.val: #if the root is smaller than both nodes
-            return self.lowestCommonAncestor(root.right,p,q) #both nodes must be to the right of the root
-        return root #otherwise the nodes are on either side of the root or one of the nodes is the root, so we return the root
-        
+        lca = None
+
+        def dfs(node):
+            # take in a node
+            # return a tuple (ancestorP, ancestorQ)
+            # which returns whether this node is an ancestor of P and/or an ancestor of Q
+            # we will also update lca if this is the lowest common ancestor of p and q
+            nonlocal lca
+            ancestorP = False
+            ancestorQ = False
+
+            if not node:
+                return (False, False)
+
+            if node == p:
+                ancestorP = True
+            if node == q:
+                ancestorQ = True
+            
+            leftAncestorP, leftAncestorQ = dfs(node.left)
+            rightAncestorP, rightAncestorQ = dfs(node.right)
+
+            if leftAncestorP or rightAncestorP:
+                ancestorP = True
+            
+            if leftAncestorQ or rightAncestorQ:
+                ancestorQ = True
+
+            if ancestorP and ancestorQ and lca == None:
+                lca = node 
+                return (True,True) 
+
+            return (ancestorP, ancestorQ)
+
+        dfs(root)
+        return lca
