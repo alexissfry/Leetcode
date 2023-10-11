@@ -1,16 +1,27 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        sub = ""
+        chars = Counter()
+        left = 0
+        right = 0
         maxLen = 0
 
-        for c in s:
-            place = sub.find(c)
-            if place != -1:
-                sub = sub[place+1:] + c
-            else:
-                sub += c
-                length = len(sub)
-                if length > maxLen:
-                    maxLen = length
+        while right < len(s):
+            r = s[right]
+            chars[r] += 1 
 
-        return maxLen
+            while chars[r] > 1:
+                l = s[left]
+                chars[l] -= 1 
+                left += 1 
+
+            maxLen = max(maxLen, right-left+1)
+            right += 1 
+
+        return maxLen 
+
+
+'''
+abccd --> abc
+
+
+'''
