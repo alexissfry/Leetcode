@@ -1,6 +1,17 @@
 class Solution:
-    @cache
-    def uniquePaths(self, m: int, n: int) -> int:
-        if m == 1 or n == 1: # if there is one column or one row, there is only one path
-            return 1
-        return self.uniquePaths(m-1,n) + self.uniquePaths(m,n-1) # you can come from above (m-1) or the left (n-1)
+    def uniquePaths(self, m, n) -> int:
+        dp = [[0]*n for _ in range(m)]
+        #n is colums; m is rows
+
+        for i in range(m):
+            dp[i][0] = 1
+
+        for j in range(n):
+            dp[0][j] = 1
+
+        for i in range(1,m):
+            for j in range(1,n):
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+        return dp[m-1][n-1]
+        
