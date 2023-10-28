@@ -1,23 +1,26 @@
 class Solution:
     def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
-        relation = {}
-        path = -1 
+        relations = {}
 
         for i in range(n):
-            if manager[i] in relation:
-                relation[manager[i]].append(i) 
+            boss = manager[i]
+            if boss in relations:
+                relations[boss].append(i)
             else:
-                relation[manager[i]] = []
-                relation[manager[i]].append(i)
+                relations[boss] = []
+                relations[boss].append(i)
 
-        def dfs(node):
-            if node not in relation:
+        def dfs(currID):
+            if currID not in relations:
                 return 0
 
-            maxLen = 0
-            for n in relation[node]:
-                maxLen = max(maxLen,dfs(n))
+            totTime = 0
+            for ids in relations[currID]:
+                totTime = max(totTime, dfs(ids))
+            
+            return totTime + informTime[currID]
 
-            return maxLen + informTime[node]
-          
+
         return dfs(headID)
+
+        
