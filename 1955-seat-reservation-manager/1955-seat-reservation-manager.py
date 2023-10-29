@@ -6,25 +6,15 @@ from heapq import heapify, heappop, heappush
 class SeatManager:
 
     def __init__(self, n: int):
-        self.n=n
-        seats = set()
-        self.seats = seats
-    
         self.seatHeap = list(range(1,n+1))
         heapify(self.seatHeap)
 
     def reserve(self) -> int:
-        if len(self.seatHeap) != 0:
-            seatNum = heappop(self.seatHeap)
-            self.seats.add(seatNum)
-            return seatNum
-
-        return -1
+        seatNum = heappop(self.seatHeap)
+        return seatNum
 
     def unreserve(self, seatNumber: int) -> None:
-        if seatNumber in self.seats:
-            self.seats.remove(seatNumber)
-            heappush(self.seatHeap,seatNumber)
+        heappush(self.seatHeap,seatNumber)
         
         
 
