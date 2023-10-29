@@ -3,8 +3,13 @@ class Solution:
         chars = set()
 
         def overlap(chars, s):
-            c = Counter(chars) + Counter(s)
-            return max(c.values()) > 1
+            prev = set()
+
+            for c in s:
+                if c in chars or c in prev:
+                    return True 
+                prev.add(c)
+            return False
         
         def backtrack(i):
             if i == len(arr):
