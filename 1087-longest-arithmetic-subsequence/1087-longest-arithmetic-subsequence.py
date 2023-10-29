@@ -6,12 +6,9 @@ class Solution:
         for i in range(len(nums)):
             for j in range(0, i):
                 d = nums[i]-nums[j]
-                if (j,d) in dp:
-                    dp[(i,d)] = dp[(j,d)]
-                else:
-                    dp[(i,d)] = 0
 
-                dp[(i,d)] += 1 
+                dp[(i,d)] = 1 + dp.get((j,d), 0) 
+
                 maxLen = max(maxLen, dp[(i,d)])
 
         return maxLen+1
